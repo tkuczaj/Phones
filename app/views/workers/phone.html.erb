@@ -1,0 +1,11 @@
+<h1>Dodajesz numer telefonu dla pracownika <%= @worker.name %></h1>
+
+<%= form_with model: [ @worker, @worker.phones.build ] do |form| %>
+	<p>
+		<%= form.label :number %><br>
+		<%= form.text_field :number %>
+	</p>
+	<p>
+		<%= form.submit %>
+	</p>
+<% end %>

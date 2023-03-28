@@ -1,0 +1,52 @@
+<h1>Spis telefonów</h1>
+<div class="list-group">
+	<% @groups.each do |group| %>
+		<div class="list-group-item list-group-item-primary p-2">
+			<% if Current.user %>
+				<div class="btn-group me-1">
+					<button type="button" class="btn btn-primary dropdown-toggle btn-sm" data-bs-toggle="dropdown" aria-expanded="false">
+						Działania
+					</button>
+					<ul class="dropdown-menu">
+						<li><a class="dropdown-item",  href="<%= edit_group_path(group) %>">Zmień nazwę wydziału</a></li>
+						<li><hr class="dropdown-divider"></li>
+						<li>
+							<%= link_to "Usuń", group_path(group), class: "dropdown-item btn-sm", data: {
+								turbo_method: :delete,
+								turbo_confirm: "Na pewno?"
+							} %>
+						</li>
+					</ul>
+				</div>
+			<% end %>
+			<span><%= group.name %></span> 
+		</div>
+		<% group.workers.each do |worker| %>
+			<div class="list-group-item d-flex align-items-center list-group-item-secondary p-1 ps-3">
+				<% if Current.user %>
+					<div class="btn-group ms-1 me-2">
+						<button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+							Działania
+						</button>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item",  href="<%= edit_worker_path(worker) %>">Zmień dane pracownika</a></li>
+							<li><a class="dropdown-item",  href="<%= new_worker_phone_path(worker) %>">Dodaj numer telefonu</a></li>
+							<li><hr class="dropdown-divider"></li>
+							<li>
+								<%= link_to "Usuń", worker_path(worker), class: "dropdown-item", data: {
+									turbo_method: :delete,
+									turbo_confirm: "Na pewno?"
+								} %>
+							</li>
+						</ul>
+					</div>
+				<% end %>
+				<span class="border-right border-primary"><%= worker.name %></span>
+				<% worker.phones.each do |phone| %>
+					<div class="badge bg-secondary rounded-pill ms-3"><%= phone.number %></div>
+				<% end %>
+			</div>
+		<% end %>
+	<% end %>
+</div>
+

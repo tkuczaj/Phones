@@ -1,0 +1,31 @@
+<h1>Edytuj pracownika</h1>
+
+<%= render "form", worker: @worker %>
+
+<div class="list-group mb-3">
+	<% @worker.phones.each do |phone| %>
+		<div class="list-group-item list-group-item-secondary p-2">
+			<div class="btn-group me-1">
+				<button type="button" class="btn btn-primary dropdown-toggle btn-sm" data-bs-toggle="dropdown" aria-expanded="false">
+					Działania
+				</button>
+				<ul class="dropdown-menu">
+					<li><a class="dropdown-item",  href="<%= edit_phone_path(phone.id) %>">Zmień numer telefonu</a></li>
+					<li><hr class="dropdown-divider"></li>
+					<li>
+						<%= link_to "Usuń numer telefonu", phone_path(phone), class: "dropdown-item btn-sm", data: {
+							turbo_method: :delete,
+							turbo_confirm: "Na pewno?"
+						} %>
+					</li>
+				</ul>
+			</div>
+			<%= phone.number %> 
+		</div>
+	<% end %>
+</div>
+
+<div class="btn-group" role="group" aria-label="Opcje numerów">
+  <a class="btn btn-primary" href="<%= new_worker_phone_path(@worker.id) %>">Dodaj numer</a>
+  <%= link_to 'Wyjdź', "/", class: "btn btn-primary" %>
+</div>

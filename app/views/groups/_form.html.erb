@@ -1,0 +1,18 @@
+<%= form_with model: @group do |form| %>
+	<div class="mb-3">
+		<%= form.label :name, value: "Nazwa grupy" %><br>
+		<%= form.text_field :name, class: "form-control" %>
+		<% if @group.errors.messages_for(:name).any? %>
+      <div class="alert alert-danger">
+        <% @group.errors.messages_for(:name).each do |message| %>
+          <div><%= message %></div>
+        <% end %>
+      </div>
+    <% end %>
+	</div>
+
+	<div class="btn-group" role="group" aria-label="Opcje numerów">
+		<%= form.submit "Dodaj grupę", class: "btn btn-primary" %>
+		<%= link_to 'Anuluj', "/", class: "btn btn-primary" %>
+	</div>
+<% end %>

@@ -1,0 +1,31 @@
+<h1>Wynik wyszukiwania</h1>
+
+<div class="list-group">
+	<% @workers.each do |worker| %>
+		<div class="list-group-item list-group-item-secondary p-2">
+			<% if Current.user %>
+				<div class="btn-group ms-1 me-2">
+					<button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+						Działania
+					</button>
+					<ul class="dropdown-menu">
+						<li><a class="dropdown-item",  href="<%= edit_worker_path(worker) %>">Zmień dane pracownika</a></li>
+						<li><a class="dropdown-item",  href="<%= new_worker_phone_path(worker) %>">Dodaj numer telefonu</a></li>
+						<li><hr class="dropdown-divider"></li>
+						<li>
+							<%= link_to "Usuń", worker_path(worker), class: "dropdown-item", data: {
+								turbo_method: :delete,
+								turbo_confirm: "Na pewno?"
+							} %>
+						</li>
+					</ul>
+				</div>
+			<% end %>
+			<span class="fw-bold"><%= worker.name %></span>
+			<span class="fst-italic text-primary-emphasis">(<%= worker.group.name %>)</span>
+			<% worker.phones.each do |phone| %>
+				<div class="badge bg-secondary rounded-pill ms-2"><%= phone.number %></div>
+			<% end %> 
+		</div>
+	<% end %>
+</div>

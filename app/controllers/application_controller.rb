@@ -7,7 +7,17 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  private 
+
   def require_user_logged_in!
     redirect_to root_path, alert: "Tylko dla zalogowanych użytkowników." if Current.user.nil?
+  end
+
+  def login(user)
+    session[:user_id] = user.id
+  end
+
+  def logout
+    session[:user_id] = nil
   end
 end

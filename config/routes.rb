@@ -14,9 +14,9 @@ Rails.application.routes.draw do
 
   resources :phones
 
-  resources :users
+  resources :users, except: [:index]
 
-  resources :sessions
+  resources :sessions, except: [:index, :new, :edit, :update, :show] 
   get "login", to: "sessions#new"
   post "login", to: "sessions#create"
   delete "logout", to: "sessions#destroy"

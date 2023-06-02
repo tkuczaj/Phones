@@ -4,6 +4,6 @@
 class Phone < ApplicationRecord
   belongs_to :worker
 
-  validates :number, presence: { message: 'Podaj numer telefonu' }
-  validates :number, format: { with: /\A\+{0,1}[\d()\-\w #]{0,30}\z/, message: 'Niepoprawny format numeru' }
+  validates :number, presence: { message: 'Phone number required' }
+  validates :number, format: { with: /\A\+{0,1}[\d()\-\w #]{0,30}\z/, message: 'Incorrect number format' }
 end

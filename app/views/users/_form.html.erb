@@ -1,63 +1,61 @@
 <%= form_with model: @user do |form| %>
-	<div class="mb-3">
-		<%= form.label :login, value: "Login" %><br>
-		<%= form.text_field :login, class: "form-control" %>
-		<% if @user.errors.messages_for(:login).any? %>
+  <div class="mb-3">
+    <%= form.label :login, value: "Login" %><br>
+    <%= form.text_field :login, class: "form-control" %>
+    <% if @user.errors.messages_for(:login).any? %>
       <div class="alert alert-danger">
         <% @user.errors.messages_for(:login).each do |message| %>
           <div><%= message %></div>
         <% end %>
       </div>
     <% end %>
-	</div>
-	<div class="mb-3">
-		<%= form.label :name, value: "Nazwa użytkownika" %><br>
-		<%= form.text_field :name, class: "form-control" %>
-		<% if @user.errors.messages_for(:name).any? %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :name, value: "User name" %><br>
+    <%= form.text_field :name, class: "form-control" %>
+    <% if @user.errors.messages_for(:name).any? %>
       <div class="alert alert-danger">
         <% @user.errors.messages_for(:name).each do |message| %>
           <div><%= message %></div>
         <% end %>
       </div>
     <% end %>
-	</div>
-	<div class="mb-3">
-		<%= form.label :email, value: "Adres e-mail" %><br>
-		<%= form.text_field :email, class: "form-control" %>
-		<% if @user.errors.messages_for(:email).any? %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :email, value: "e-mail" %><br>
+    <%= form.text_field :email, class: "form-control" %>
+    <% if @user.errors.messages_for(:email).any? %>
       <div class="alert alert-danger">
         <% @user.errors.messages_for(:email).each do |message| %>
           <div><%= message %></div>
         <% end %>
       </div>
     <% end %>
-	</div>
-	<div class="mb-3">
-		<%= form.label :password, value: "Hasło" %><br>
-		<%= form.password_field :password, class: "form-control" %>
-		<% if @user.errors.messages_for(:password).any? %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :password, value: "Password" %><br>
+    <%= form.password_field :password, class: "form-control" %>
+    <% if @user.errors.messages_for(:password).any? %>
       <div class="alert alert-danger">
         <% @user.errors.messages_for(:password).each do |message| %>
           <div><%= message %></div>
         <% end %>
       </div>
     <% end %>
-	</div>
-	<div class="mb-3">
-		<%= form.label :password_confirmation, value: "Powtórz hasło" %><br>
-		<%= form.password_field :password_confirmation, class: "form-control" %>
-		<% if @user.errors.messages_for(:password_confirmation).any? %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :password_confirmation, value: "Confirm password" %><br>
+    <%= form.password_field :password_confirmation, class: "form-control" %>
+    <% if @user.errors.messages_for(:password_confirmation).any? %>
       <div class="alert alert-danger">
         <% @user.errors.messages_for(:password_confirmation).each do |message| %>
           <div><%= message %></div>
         <% end %>
       </div>
     <% end %>
-	</div>
-	<div class="mb-3">
-		<%= form.submit "Dodaj użytkownika", class: "btn btn-primary" %>
-	</div>
-	<div class="mb-3">
-		<%= link_to 'Anuluj', "/", class: "btn btn-primary" %>
-	</div>
+  </div>
+  <div class="btn-group" role="group" aria-label="Opcje numerów">
+    <%= form.submit "Save entry", class: "btn btn-primary" %>
+    <%= link_to 'Cancel', "/", class: "btn btn-primary" %>
+  </div>
 <% end %>

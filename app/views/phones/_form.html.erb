@@ -1,20 +1,20 @@
 <%= form_with model: phone do |form| %>
-	<div class="mb-3">
-		<%= form.label :number, value: "Numer telefonu" %><br>
-		<%= form.text_field :number, class: "form-control" %>
-		<% if @phone.errors.messages_for(:number).any? %>
+  <div class="mb-3">
+    <%= form.label :number, value: "Phone number" %><br>
+    <%= form.text_field :number, class: "form-control" %>
+    <% if @phone.errors.messages_for(:number).any? %>
       <div class="alert alert-danger">
         <% @phone.errors.messages_for(:number).each do |message| %>
           <div><%= message %></div>
         <% end %>
       </div>
     <% end %>
-	</div>
+  </div>
 
-	<%= form.hidden_field :worker_id, value: @worker.id %>
+  <%= form.hidden_field :worker_id, value: @worker.id %>
 
-	<div class="btn-group" role="group" aria-label="Opcje numerów">
-		<%= form.submit "Dodaj numer", class: "btn btn-primary" %>
-		<%= link_to 'Anuluj', "/workers/"+@worker.id.to_s+"/edit", class: "btn btn-primary" %>
-	</div>
+  <div class="btn-group" role="group" aria-label="Opcje numerów">
+    <%= form.submit "Save", class: "btn btn-primary" %>
+    <%= link_to 'Cancel', "/workers/"+@worker.id.to_s+"/edit", class: "btn btn-primary" %>
+  </div>
 <% end %>

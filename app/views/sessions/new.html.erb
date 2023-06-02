@@ -1,17 +1,17 @@
-<h1>Zaloguj użytkownika systemu</h1>
+<h1>Sign in</h1>
 
 <%= form_with url: login_path do |form| %>
-	<div class="mb-3">
-		<%= form.label :Login, value: "Login" %><br>
-		<%= form.text_field :login, class: "form-control" %>
-	</div>
-	<div class="mb-3">
-		<%= form.label :Hasło, value: "Hasło" %><br>
-		<%= form.password_field :password, class: "form-control" %>
-	</div>
+  <div class="mb-3">
+    <%= form.label :Login, value: "Login" %><br>
+    <%= form.text_field :login, class: "form-control" %>
+  </div>
+  <div class="mb-3">
+    <%= form.label :Password, value: "Password" %><br>
+    <%= form.password_field :password, class: "form-control" %>
+  </div>
 
   <div class="btn-group" role="group" aria-label="Opcje logowania">
-		<%= form.submit "Zaloguj", class: "btn btn-primary" %>
-		<%= link_to 'Anuluj', "/", class: "btn btn-primary" %>
-	</div>
+    <%= form.submit "Sing in", class: "btn btn-primary" %>
+    <%= link_to 'Cancel', "/", class: "btn btn-primary" %>
+  </div>
 <% end %>

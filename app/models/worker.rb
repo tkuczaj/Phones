@@ -19,8 +19,8 @@ class Worker < ApplicationRecord
   end
 
   validates :name, presence: {
-    message: 'Podaj nazwę pracownika'
+    message: 'Entry name required'
   }, format: {
-    with: /\A[\d\-[[:alnum:]] ]{0,150}\z/, message: 'Możesz użyć liter, cyfr, kropki i myślnika.'
+    with: /\A[\d\-[[:alnum:]] ]{0,150}\z/, message: 'Letters, numbers, dots and hyphens allowed. Maximum 150 characters.'
   }
 end

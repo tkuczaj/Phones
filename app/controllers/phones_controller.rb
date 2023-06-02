@@ -1,11 +1,12 @@
+# frozen_string_literal: true
+
+# Define phones controller
 class PhonesController < ApplicationController
   before_action :require_user_logged_in!
 
-  def index
-  end
+  def index; end
 
-  def show
-  end
+  def show; end
 
   def new
     @worker = Worker.find(params[:worker_id])
@@ -48,7 +49,8 @@ class PhonesController < ApplicationController
   end
 
   private
-    def phone_params
-      params.require(:phone).permit(:number, :worker_id)
-    end
+
+  def phone_params
+    params.require(:phone).permit(:number, :worker_id)
+  end
 end

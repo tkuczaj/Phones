@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Define groups controller
 class GroupsController < ApplicationController
   before_action :require_user_logged_in!
   skip_before_action :require_user_logged_in!, only: [:index]
@@ -6,8 +9,7 @@ class GroupsController < ApplicationController
     @groups = Group.all
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @group = Group.new
@@ -38,14 +40,15 @@ class GroupsController < ApplicationController
   end
 
   def destroy
-    @group = Group.find(params[:id])    
+    @group = Group.find(params[:id])
     @group.destroy
 
     redirect_to root_path, status: :see_other
   end
 
   private
-    def group_params
-      params.require(:group).permit(:name)
-    end
+
+  def group_params
+    params.require(:group).permit(:name)
+  end
 end
